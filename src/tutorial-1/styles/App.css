@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.app {
+    margin: 50px;
+    width: 550px;
+    height: 150px;
+    padding: 15px;
+    border: 10px solid #eee;
+    border-radius: 20px;
+    padding-left: 50px;
+}
+.post {
+    padding-top: 10px;
+    font-size: 30px;
+    font-weight: 600;
+}
+.post__date {
+    padding-top: 15px;
+}
+.separation {
+    padding-left: 200px;
+}
