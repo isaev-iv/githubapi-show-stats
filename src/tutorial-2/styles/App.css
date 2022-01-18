@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.post {
+    margin: 100px;
+    
+}
+.post__login {
+    width: 500px;
+    height: 60px;
+    display: block;
+    font-size: 35px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    border: 2px solid rgb(179, 175, 175);
+    
+}
+
+.post__pass {
+    margin: 0px;
+    width: 500px;
+    height: 60px;
+    display: block;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    border: 2px solid rgb(179, 175, 175);
+    font-size: 35px;
+}
+
+.post__button {
+    width: 150px;
+    height: 60px;
+    font-size: 35px;
+    cursor: pointer;
+    text-rendering: auto;
+}
