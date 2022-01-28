@@ -17,8 +17,8 @@ const Form = () => {
     event.preventDefault();
     if (email && password) {
       console.log({ email, password });
-      email = null;
-      password = null;
+      email = "";
+      password = "";
       event.target.reset();
     } else {
       alert("Заполните поля!");
