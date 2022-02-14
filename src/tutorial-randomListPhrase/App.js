@@ -5,6 +5,7 @@ import Phrase from "./components/Phrase";
 import "./App.css";
 
 const App = () => {
+  const [phrasesList, setPhrasesList] = React.useState([]);
   const adjectivesArr = [
     "абсолютный",
     "адский",
@@ -49,8 +50,6 @@ const App = () => {
     "дурак",
   ];
 
-  const [phrasesList, setPhrasesList] = React.useState([]);
-
   /* Функция генерации рандомных числовых значений */
   const getRandomNumber = (min, max) => {
     return Math.round(Math.random() * (max - min) + min);
@@ -58,12 +57,12 @@ const App = () => {
 
   /* Функция генерации рандомных словосочетаний */
   const handleClickGenerate = () => {
-    const firstElem = Math.floor(Math.random() * adjectivesArr.length);
-    const secondElem = Math.floor(Math.random() * adjectivesArr.length);
-    const thirdElem = Math.floor(Math.random() * nounsArr.length);
+    const randomFirstElem = Math.floor(Math.random() * adjectivesArr.length);
+    const randomSecondElem = Math.floor(Math.random() * adjectivesArr.length);
+    const randomNounsElem = Math.floor(Math.random() * nounsArr.length);
 
     setPhrasesList((prev) => [
-      `${adjectivesArr[firstElem]} ${adjectivesArr[secondElem]} ${nounsArr[thirdElem]}`,
+      `${adjectivesArr[randomFirstElem]} ${adjectivesArr[randomSecondElem]} ${nounsArr[randomNounsElem]}`,
       ...prev,
     ]);
   };
