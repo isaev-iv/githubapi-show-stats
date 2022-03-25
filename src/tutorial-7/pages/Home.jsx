@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Card, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const posts = [
+export const posts = [
   {
     id: 1,
     imageUrl:
@@ -32,7 +33,7 @@ const posts = [
   },
 ];
 
-export const Home = () => {
+export const Home = ({ id }) => {
   return (
     <Row xs={1} md={2} className="g-4">
       {posts.map((obj) => (
@@ -40,8 +41,10 @@ export const Home = () => {
           <Card>
             <Card.Img variant="top" src={obj.imageUrl} />
             <Card.Body>
-              <Card.Title href="/post/1">{obj.title}</Card.Title>
-              <Card.Text> {obj.text}</Card.Text>
+              <Card.Title>
+                <Link to={`/post/${obj.id}`}>{obj.title} </Link>
+              </Card.Title>
+              <Card.Text> {obj.text.substr(0, 100)}...</Card.Text>
             </Card.Body>
           </Card>
         </Col>
