@@ -11,6 +11,7 @@ export const FullArticle = () => {
   if (!post) {
     return <NoMatch />;
   }
+
   return (
     <div>
       <h1>{post.title}</h1>
