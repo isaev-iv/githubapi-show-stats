@@ -5,112 +5,111 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 function App() {
-  const [fields, setFields] = React.useState({
-    name: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({ mode: "onBlur" });
 
+  const onSubmit = (values) => {
+    console.log(values);
+    reset();
+  };
   const handleClickClear = () => {
-    setFields({
-      name: "",
-      lastName: "",
-      email: "",
-      password: "",
-    });
+    reset();
   };
-  const handleClickRegister = () => {
-    if (!fields.email.includes("@")) {
-      alert("Почта неверная!");
-      return;
-    }
-    if (fields.name.length < 2 || fields.lastName.length < 2) {
-      alert("Почта или фамилия неверные!");
-      return;
-    }
-    if (fields.password.length < 6) {
-      alert("Пароль должен быть больше 6 символов!");
-      return;
-    }
-    console.log(fields);
-  };
-
-  const handleChangeInput = (event) => {
-    const { name, value } = event.target;
-    setFields({
-      ...fields,
-      [name]: value,
-    });
-  };
-
-  const isValid =
-    !!fields.name && !!fields.lastName && !!fields.email && !!fields.password;
-
-  const disableClear =
-    !!fields.name || !!fields.lastName || !!fields.email || !!fields.password;
-  console.log(isValid);
 
   return (
-    <>
-      <div className="row">
-        <TextField
-          name="name"
-          onChange={handleChangeInput}
-          value={fields.name}
-          label="Имя"
-          variant="standard"
-          fullWidth
-        />
-        <TextField
-          name="lastName"
-          onChange={handleChangeInput}
-          value={fields.lastName}
-          label="Фамилия"
-          variant="standard"
-          fullWidth
-        />
-      </div>
-      <div className="row">
-        <TextField
-          name="email"
-          onChange={handleChangeInput}
-          value={fields.email}
-          label="Email"
-          variant="standard"
-          fullWidth
-        />
-        <TextField
-          name="password"
-          onChange={handleChangeInput}
-          value={fields.password}
-          type="password"
-          label="Пароль"
-          variant="standard"
-          fullWidth
-        />
-      </div>
-      <br />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="App">
+        <div className="row">
+          <TextField
+            name="firstName"
+            label="Имя"
+            {...register("name", {
+              required: "Это обязательное поле!",
+              minLength: {
+                value: 2,
+                message: "Минимум 2 символа.",
+              },
+            })}
+            helperText={errors?.name && errors?.name.message}
+            error={!!errors?.name}
+            fullWidth
+          />
 
-      <div className="row">
-        <Button
-          disabled={!isValid}
-          onClick={handleClickRegister}
-          variant="contained"
-          color="success"
-        >
-          Регистрация
-        </Button>
-        <Button
-          disabled={!disableClear}
-          onClick={handleClickClear}
-          variant="contained"
-          color="error"
-        >
-          Очистить
-        </Button>
+          <TextField
+            name="lastName"
+            label="Фамилия"
+            {...register("lastName", {
+              required: "Это обязательное поле!",
+              minLength: {
+                value: 3,
+                message: "Минимум 3 символа.",
+              },
+            })}
+            helperText={errors?.lastName && errors?.lastName.message}
+            error={!!errors?.lastName}
+            fullWidth
+          />
+        </div>
+        <div className="row">
+          <TextField
+            name="email"
+            label="E-Mail"
+            defaultValue=""
+            {...register("email", {
+              required: "Это обязательное поле!",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Неккоретный E-mail",
+              },
+            })}
+            helperText={errors?.email && errors?.email.message}
+            error={!!errors?.email}
+            fullWidth
+          />
+
+          <TextField
+            name="password"
+            type="password"
+            label="Пароль"
+            {...register("password", {
+              required: "Это обязательное поле!",
+              minLength: {
+                value: 6,
+                message: "Минимум 6 символов.",
+              },
+            })}
+            helperText={errors?.password && errors?.password.message}
+            error={!!errors?.password}
+            fullWidth
+          />
+        </div>
+
+        <div className="row">
+          <TextField name="about" label="Обо мне" fullWidth />
+        </div>
+        <br />
+        <div className="row">
+          <Button
+            onClick={handleSubmit(onSubmit)}
+            variant="contained"
+            color="primary"
+          >
+            Зарегистрироваться
+          </Button>
+          <Button
+            onClick={handleClickClear}
+            variant="contained"
+            color="secondary"
+          >
+            Очистить
+          </Button>
+        </div>
       </div>
-    </>
+    </form>
   );
 }
 
