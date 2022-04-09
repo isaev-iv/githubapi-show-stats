@@ -62,7 +62,13 @@ body {
     box-shadow: 0px 5px 25px rgb(0 122 254 / 40%);
     line-height: 26px;
     cursor: pointer;
+
+    &:disabled {
+        color:rgb(74, 74, 74);
+        background-color:#b4b4b4;
+    }
 }
+
 
 .app-user {
     padding: 35px;
@@ -109,12 +115,12 @@ body {
     border-radius: 10px;
     border: 1px solid #141c2f;
     list-style: none;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 25px;
 }
 
 .app-user_stats-item {
-    padding: 0 25px;
+    padding: 0 15px;
     font-size: 15px;
     font-weight: 100;
     line-height: 22px;
