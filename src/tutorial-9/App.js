@@ -9,22 +9,6 @@ function App() {
   const [data, setData] = React.useState(null);
   const [loadingUser, setLoadingUser] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  // !!!не смог реализовать функцию Debounce
-  // !!!Функция сохранения query параметров отправляет из инпута в url, затем из url в инпут отправляет, но не рендерит заново
-  // React.useEffect(() => {
-  //   debounce(fetchData, 5000)();
-  //   console.log("change is done");
-  // }, [inputValue]);
-
-  // const debounce = (fn, delay) => {
-  //   let timer;
-  //   return function () {
-  //     clearTimeout(timer);
-  //     timer = setTimeout(() => {
-  //       fn(inputValue);
-  //     }, delay);
-  //   };
-  // };
 
   React.useEffect(() => {
     let params = new URL(document.location).searchParams;
