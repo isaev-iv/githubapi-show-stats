@@ -10,12 +10,12 @@ function App() {
   const [loadingUser, setLoadingUser] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    let params = new URL(document.location).searchParams;
-    let login = params.get("login");
-    setInputValue(login);
-    fetchData();
-  }, []);
+  // React.useEffect(() => {
+  //   let params = new URL(document.location).searchParams;
+  //   let login = params.get("login");
+  //   setInputValue(login);
+  //   fetchData();
+  // }, []);
 
   const setQueryParams = () => {
     window.history.pushState(

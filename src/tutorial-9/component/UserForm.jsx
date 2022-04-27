@@ -1,6 +1,6 @@
 import React from "react";
 
-export const UserForm = ({}) => {
+export const UserForm = ({ data }) => {
   const {
     avatar_url,
     name,
